@@ -25,7 +25,7 @@ testpaths = ["tests"]
 addopts = "-q --cov=biteharbor --cov-report=term-missing"
 
 [tool.ruff]
-target-version = "py311"
+target-version = "py312"
 line-length = 100
 
 [tool.ruff.lint]
