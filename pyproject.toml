@@ -3,7 +3,7 @@ name = "biteharbor-langgraph-food-assistant"
 version = "0.1.0"
 description = "Grounded menu discovery and customer-scoped order support with LangGraph"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 dependencies = [
   "langgraph>=1.0,<2", "langgraph-checkpoint-sqlite>=3,<4",
   "langchain-openai>=1,<2", "langchain-chroma>=1,<2",
@@ -30,3 +30,6 @@ line-length = 100
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/biteharbor"]
