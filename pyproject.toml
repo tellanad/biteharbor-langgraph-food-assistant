@@ -1,7 +1,32 @@
 [project]
 name = "biteharbor-langgraph-food-assistant"
 version = "0.1.0"
-description = "Add your description here"
+description = "Grounded menu discovery and customer-scoped order support with LangGraph"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+  "langgraph>=1.0,<2", "langgraph-checkpoint-sqlite>=3,<4",
+  "langchain-openai>=1,<2", "langchain-chroma>=1,<2",
+  "pydantic-settings>=2.10,<3",
+]
+
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+biteharbor = "biteharbor.main:main"
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "pytest-cov>=6,<8", "ruff>=0.12,<1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --cov=biteharbor --cov-report=term-missing"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
