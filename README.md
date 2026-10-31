@@ -85,8 +85,22 @@ The offline demo uses deterministic fixture behavior. For the full LLM and vecto
 ```bash
 cp .env.example .env
 # Add OPENAI_API_KEY to .env
+uv sync --extra live
 uv run biteharbor --customer demo-priya
 ```
+
+### Web demo and Vercel
+
+The repository also includes a FastAPI adapter and responsive portfolio UI. The public web path
+uses deterministic synthetic fixtures, while the CLI retains the optional OpenAI-backed mode.
+
+```bash
+uv run uvicorn app:app --reload
+```
+
+Open `http://127.0.0.1:8000`, or inspect the API at
+`http://127.0.0.1:8000/api/docs`. Deploy a preview with `vercel deploy`; the Vercel entry point is
+declared in `pyproject.toml`.
 
 Configuration is environment-based:
 
@@ -141,6 +155,9 @@ src/biteharbor/
   graph.py         LangGraph nodes, routing, HITL, and synthesis
   main.py          CLI and durable checkpoint lifecycle
   state.py         typed graph state and routing schema
+  web.py           FastAPI adapter and public demo contract
+app.py              Vercel entry point
+web/                responsive browser client
 tests/              offline unit and graph tests
 docs/               architecture, demo, and business evaluation plan
 ```

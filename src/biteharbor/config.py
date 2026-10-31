@@ -2,7 +2,6 @@
 
 from pathlib import Path
 
-from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -21,8 +20,10 @@ class Settings(BaseSettings):
 settings = Settings()
 
 
-def get_llm(temperature: float = 0.0) -> ChatOpenAI:
+def get_llm(temperature: float = 0.0):
     """Return an initialized ChatOpenAI instance."""
+    from langchain_openai import ChatOpenAI
+
     api_key = settings.openai_api_key.get_secret_value() if settings.openai_api_key else None
     return ChatOpenAI(
         model=settings.model,
@@ -33,8 +34,10 @@ def get_llm(temperature: float = 0.0) -> ChatOpenAI:
     )
 
 
-def get_embeddings() -> OpenAIEmbeddings:
+def get_embeddings():
     """Return an initialized OpenAIEmbeddings instance."""
+    from langchain_openai import OpenAIEmbeddings
+
     api_key = settings.openai_api_key.get_secret_value() if settings.openai_api_key else None
     return OpenAIEmbeddings(
         model=settings.embedding_model,

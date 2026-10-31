@@ -1,0 +1,8 @@
+.biteharbor
+.coverage
+.github
+.pytest_cache
+.ruff_cache
+dist
+docs
+tests

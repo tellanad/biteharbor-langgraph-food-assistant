@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="BiteHarbor: a LangGraph food discovery and order support assistant." />
+    <title>BiteHarbor · Food support, orchestrated</title>
+    <style>
+      :root { color-scheme:dark; --ink:#f7f5ef; --muted:#a8aca3; --line:#30342f; --lime:#b9f56b; }
+      * { box-sizing:border-box; }
+      body { margin:0; min-height:100vh; color:var(--ink); background:radial-gradient(circle at 80% 0,#263721 0,transparent 34rem),#0a0c0a; font:16px/1.55 Inter,ui-sans-serif,system-ui,sans-serif; }
+      .shell { width:min(1120px,calc(100% - 32px)); margin:auto; padding:28px 0 52px; }
+      header { display:flex; align-items:center; justify-content:space-between; gap:20px; margin-bottom:56px; }
+      .brand { display:flex; align-items:center; gap:12px; font-weight:760; letter-spacing:-.02em; }
+      .mark { display:grid; place-items:center; width:38px; height:38px; border-radius:12px; color:#10130e; background:var(--lime); font-size:20px; }
+      .pill { padding:7px 12px; border:1px solid var(--line); border-radius:99px; color:var(--muted); font-size:13px; }
+      main { display:grid; grid-template-columns:.9fr 1.1fr; gap:56px; align-items:start; }
+      .eyebrow { color:var(--lime); font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+      h1 { max-width:650px; margin:14px 0 18px; font-size:clamp(44px,7vw,78px); line-height:.95; letter-spacing:-.065em; }
+      .lead { max-width:560px; color:var(--muted); font-size:18px; }
+      .features { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:38px; }
+      .feature { padding:14px; border:1px solid var(--line); border-radius:16px; background:#111410aa; }
+      .feature strong { display:block; font-size:13px; }
+      .feature span { color:var(--muted); font-size:12px; }
+      .card { overflow:hidden; border:1px solid #384036; border-radius:24px; background:linear-gradient(145deg,#181c18,#101210); box-shadow:0 30px 90px #0008; }
+      .card-head { display:flex; align-items:center; justify-content:space-between; padding:18px 20px; border-bottom:1px solid var(--line); }
+      .status { display:flex; align-items:center; gap:8px; color:var(--muted); font-size:12px; }
+      .dot { width:8px; height:8px; border-radius:50%; background:var(--lime); box-shadow:0 0 12px var(--lime); }
+      .chat { min-height:350px; max-height:440px; padding:20px; overflow:auto; }
+      .message { width:fit-content; max-width:88%; margin:0 0 14px; padding:12px 14px; border-radius:16px; white-space:pre-wrap; }
+      .assistant { border:1px solid var(--line); background:#1b1e1a; }
+      .user { margin-left:auto; color:#11140e; background:var(--lime); }
+      .label { display:block; margin-bottom:5px; color:var(--muted); font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; }
+      .user .label { color:#40512d; }
+      form { padding:16px; border-top:1px solid var(--line); }
+      .controls { display:flex; gap:8px; margin-bottom:10px; }
+      select,input,button { border:0; font:inherit; }
+      select { min-width:0; padding:8px 10px; color:var(--muted); border:1px solid var(--line); border-radius:10px; background:#111410; }
+      .composer { display:flex; gap:9px; }
+      input { width:100%; padding:13px 14px; color:var(--ink); outline:none; border:1px solid var(--line); border-radius:12px; background:#0d0f0d; }
+      input:focus { border-color:var(--lime); box-shadow:0 0 0 3px #b9f56b18; }
+      button { padding:0 18px; border-radius:12px; color:#10130e; background:var(--lime); font-weight:800; cursor:pointer; }
+      button:disabled { opacity:.55; cursor:wait; }
+      .examples { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+      .example { padding:7px 10px; color:var(--muted); border:1px solid var(--line); border-radius:99px; background:transparent; font-size:12px; font-weight:600; }
+      footer { display:flex; justify-content:space-between; gap:20px; margin-top:34px; color:#73786f; font-size:12px; }
+      a { color:var(--lime); }
+      @media (max-width:850px) { main{grid-template-columns:1fr;gap:36px}.features{margin-top:24px}header{margin-bottom:38px} }
+      @media (max-width:520px) { .shell{width:min(100% - 20px,1120px)}.features{grid-template-columns:1fr}.pill{display:none}.controls{flex-direction:column}.card{border-radius:18px}footer{flex-direction:column} }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header><div class="brand"><span class="mark">B</span>BiteHarbor</div><span class="pill">LangGraph · FastAPI · Vercel</span></header>
+      <main>
+        <section>
+          <div class="eyebrow">Portfolio showcase</div>
+          <h1>Food support, intelligently routed.</h1>
+          <p class="lead">A grounded multi-agent assistant for menu discovery and privacy-scoped order tracking. The public demo runs deterministic synthetic fixtures, so every answer is fast, safe, and reproducible.</p>
+          <div class="features">
+            <div class="feature"><strong>Grounded answers</strong><span>Catalog-backed menu facts</span></div>
+            <div class="feature"><strong>Scoped access</strong><span>Customer-bound orders</span></div>
+            <div class="feature"><strong>Human in the loop</strong><span>Identifier collection</span></div>
+          </div>
+        </section>
+        <section class="card" aria-label="BiteHarbor assistant demo">
+          <div class="card-head"><strong>Assistant</strong><span class="status"><span class="dot"></span>Demo online</span></div>
+          <div class="chat" id="chat" aria-live="polite"><div class="message assistant"><span class="label">BiteHarbor</span>Welcome! Ask for a menu recommendation or track a synthetic order.</div></div>
+          <form id="chat-form">
+            <div class="controls"><select id="customer" aria-label="Demo customer"><option value="demo-priya">Priya · ORD-201</option><option value="demo-arjun">Arjun · ORD-202</option><option value="demo-sneha">Sneha · ORD-203</option><option value="demo-rahul">Rahul · ORD-204</option><option value="demo-kavya">Kavya · ORD-205</option></select></div>
+            <div class="composer"><input id="message" maxlength="4000" autocomplete="off" placeholder="Ask about vegan dishes…" aria-label="Message" required /><button id="send" type="submit">Send</button></div>
+            <div class="examples"><button class="example" type="button" data-query="Show vegan dishes under 350">Vegan under ₹350</button><button class="example" type="button" data-query="Where is my order?">Track my order</button><button class="example" type="button" data-query="Show Indian food under 300">Indian under ₹300</button></div>
+          </form>
+        </section>
+      </main>
+      <footer><span>Synthetic portfolio demo · No real customer data</span><span><a href="/api/docs">API docs</a> · <a href="https://github.com/tellanad/biteharbor-langgraph-food-assistant">Source</a></span></footer>
+    </div>
+    <script>
+      const form=document.getElementById('chat-form'),input=document.getElementById('message'),chat=document.getElementById('chat'),send=document.getElementById('send');let pending=null;
+      function add(role,text){const el=document.createElement('div');el.className=`message ${role}`;const label=document.createElement('span');label.className='label';label.textContent=role==='user'?'You':'BiteHarbor';el.append(label,document.createTextNode(text));chat.append(el);chat.scrollTop=chat.scrollHeight;}
+      async function ask(message){add('user',message);send.disabled=true;try{const body={message:pending||message,customer_id:document.getElementById('customer').value};if(pending)body.identifier=message;const response=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});if(!response.ok)throw new Error('Request failed');const data=await response.json();if(data.status==='needs_identifier'){pending=message;add('assistant',data.prompt);}else{pending=null;add('assistant',data.answer);}}catch(error){add('assistant','The demo could not complete that request. Please retry.');}finally{send.disabled=false;input.focus();}}
+      form.addEventListener('submit',event=>{event.preventDefault();const value=input.value.trim();if(!value)return;input.value='';ask(value);});
+      document.querySelectorAll('[data-query]').forEach(button=>button.addEventListener('click',()=>{input.value=button.dataset.query;form.requestSubmit();}));
+    </script>
+  </body>
+</html>

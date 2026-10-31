@@ -15,12 +15,17 @@ classifiers = [
   "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
-  "langchain-chroma>=1,<2",
+  "fastapi>=0.117.1,<1",
   "langchain-core>=1,<2",
-  "langchain-openai>=1,<2",
   "langgraph>=1.0,<2",
-  "langgraph-checkpoint-sqlite>=3,<4",
   "pydantic-settings>=2.10,<3",
+]
+
+[project.optional-dependencies]
+live = [
+  "langchain-chroma>=1,<2",
+  "langchain-openai>=1,<2",
+  "langgraph-checkpoint-sqlite>=3,<4",
 ]
 
 [project.urls]
@@ -36,10 +41,18 @@ biteharbor = "biteharbor.main:main"
 
 [dependency-groups]
 dev = [
+  "httpx>=0.28,<1",
+  "langchain-chroma>=1,<2",
+  "langchain-openai>=1,<2",
+  "langgraph-checkpoint-sqlite>=3,<4",
   "pytest>=8,<10",
   "pytest-cov>=6,<8",
   "ruff>=0.12,<1",
+  "uvicorn>=0.38,<1",
 ]
+
+[tool.vercel]
+entrypoint = "app:app"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
