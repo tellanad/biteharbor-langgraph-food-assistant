@@ -3,6 +3,7 @@
 [![CI](https://github.com/tellanad/biteharbor-langgraph-food-assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/tellanad/biteharbor-langgraph-food-assistant/actions/workflows/ci.yml)
 [![Python 3.12](https://img.shields.io/badge/python-3.12-3776AB.svg)](https://www.python.org/)
 [![License MIT](https://img.shields.io/badge/license-MIT-2ea44f.svg)](LICENSE)
+[![Live Demo](https://img.shields.io/badge/live_demo-Vercel-000000.svg)](https://biteharbor-langgraph-food-assistant.vercel.app/)
 
 Grounded menu discovery and customer-scoped order support built with LangGraph, OpenAI, and
 Chroma. BiteHarbor demonstrates a production-minded agent workflow in which models handle routing
@@ -91,8 +92,10 @@ uv run biteharbor --customer demo-priya
 
 ### Web demo and Vercel
 
-The repository also includes a FastAPI adapter and responsive portfolio UI. The public web path
+The repository also includes a FastAPI adapter and responsive portfolio UI. The deployed web path
 uses deterministic synthetic fixtures, while the CLI retains the optional OpenAI-backed mode.
+
+**Live application:** [biteharbor-langgraph-food-assistant.vercel.app](https://biteharbor-langgraph-food-assistant.vercel.app/)
 
 ```bash
 uv run uvicorn app:app --reload
