@@ -30,8 +30,8 @@ MENU_ITEMS: list[dict] = [
         "cuisine": "Indian",
         "price": 379,
         "rating": 4.9,
-        "dietary_tags": ["gluten-free"],
-        "description": "Creamy tomato curry with tender chicken; served with naan",
+        "dietary_tags": [],
+        "description": "Creamy tomato curry with tender chicken; served with wheat naan",
         "available": True,
     },
     {
